@@ -5,15 +5,16 @@ const { Application } = require('../db')
 
 
 
-// router.get('/', async (req, res, next) => {
-//   try {
-//     const allJobs = await Application.findAll()
-//     res.json(allJobs)
-//   } catch (error) {
-//     next(error)
+router.get('/', async (req, res, next) => {
+  try {
+    const allJobs = await Application.findAll()
+    console.log('alljobs', allJobs)
+    res.json(allJobs)
+  } catch (error) {
+    next(error)
 
-//   }
-// })
+  }
+})
 
 
 
@@ -29,19 +30,19 @@ const { Application } = require('../db')
 //   }
 // })
 
-// router.post('/', async (req, res, next) => {
-//   try {
-//     const newJob = await Application.create({
-//       name: req.body.name,
-//       imageUrl: req.body.imageUrl,
-//       address: req.body.address
+router.post('/', async (req, res, next) => {
+  try {
+    const newJob = await Application.create({
+      companyName: req.body.company,
+      method: req.body.method,
+      rejected: req.body.rejected
 
-//     })
-//     res.json(newJob)
-//   } catch (error) {
-//     next(error)
-//   }
-// })
+    })
+    res.json(newJob)
+  } catch (error) {
+    next(error)
+  }
+})
 
 // router.delete('/:id', async (req, res, next) => {
 //   try {
